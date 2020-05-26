@@ -1,0 +1,29 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MValeriano/todo-list.git"
+  },
+  "keywords": [
+    "nodeJS",
+    "tod-list"
+  ],
+  "author": "Marcelo Vieira Valeriano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MValeriano/todo-list/issues"
+  },
+  "homepage": "https://github.com/MValeriano/todo-list#readme",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "lodash": "^4.17.15",
+    "nodemon": "^2.0.4",
+    "yargs": "^15.3.1"
+  }
+}
