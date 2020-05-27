@@ -7,7 +7,24 @@ yargs.command(
     {
         command  : 'add',
         describe : 'Add a new task into the ToDo list',
-        handler  : () => console.log(chalk.green.inverse('Creating a new task')) 
+        builder:{
+            name:{
+                describe     : 'Task name',
+                demandOption : true,
+                type         : 'string'
+            },
+            description:{
+                describe     : 'Type of the task',
+                demandOption : true,
+                type         : 'string'
+            },
+            status:{
+                describe     : 'Status of the task',
+                demandOption : true,
+                type         : 'string'
+            }
+        },
+        handler  : ({name,description,status}) => console.log(chalk.green.bold.inverse(`Creating a new task -> title ${name}, description ${description}, status ${status} `)) 
     },
 );
 
@@ -35,8 +52,7 @@ yargs.command(
     }
 )
 
-
-console.log(yargs.argv);
+yargs.parse();
 /*
 // sem o Yargs instalado, buscando os argumentos pelo process
 //const [sistema,arquivo,comando,tarefa] = process.argv;
