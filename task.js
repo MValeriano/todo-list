@@ -2,8 +2,6 @@ const fs    = require('fs');
 const chalk = require('chalk');
 
 const addTask = (name,description) => {
-
-    debugger;
     
     const tasks = loadAllTasks();
 
