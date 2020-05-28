@@ -1,8 +1,10 @@
+
 const yargs = require('yargs');
 const chalk = require('chalk');
 const task = require('./task');
 
 yargs.command(
+    
     {
         command  : 'add',
         describe : 'Add a new task into the ToDo list',
@@ -87,6 +89,10 @@ yargs.command(
 )
 
 yargs.parse();
+
+
+
+
 /*
 // sem o Yargs instalado, buscando os argumentos pelo process
 //const [sistema,arquivo,comando,tarefa] = process.argv;
@@ -104,7 +110,7 @@ switch (comando.toUpperCase()){
     break;
     default : console.log('use o seguinte formato comando (ADD ou REMOVE) tarefa');
 }
+
+[{"name":"Estudar CSS","description":"pós graduação puc minas","status":"BACKLOG"},{"name":"Estudar HTML","description":"pós graduação puc minas","status":"BACKLOG"},{"name":"Estudar JAVASCRIPT","description":"pós graduação puc minas","status":"BACKLOG"},{"name":"Estudar NODE","description":"pós graduação puc minas","status":"DONE"},{"name":"Estudar ES6","description":"pós graduação puc minas","status":"DONE"}]
+
 */
-
-
-

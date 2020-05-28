@@ -1,8 +1,0 @@
-Estudar NodeJS 
-Estudar javaScript 
-Estudar html 
-Estudar css 
-Estudar Es6 
-REMOVE - Estudar html 
-Estudar React 
-Estudar Angular 

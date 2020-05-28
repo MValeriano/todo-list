@@ -2,7 +2,12 @@ const fs    = require('fs');
 const chalk = require('chalk');
 
 const addTask = (name,description) => {
+
+    debugger;
+    
     const tasks = loadAllTasks();
+
+   // console.log(tasks);
 
     const duplicatedTask = tasks.find( (task) => task.name === name) ;
 
@@ -44,18 +49,15 @@ const removeTask = (name) => {
 }
 
 const loadTask = (name) => {
-    let tasks = loadAllTasks();
-    tasks = tasks.find((task) => task.name === name);
+    const tasks = loadAllTasks();
+    tasks.find((task) => task.name === name);
 
     return tasks ? tasks : `Não existe a tarefa [${name}]`     
 }
 
 const updateTask = (name,status) => {
-    let tasks = loadAllTasks();
-    let alterTask = tasks.find((task) => task.name === name);
-    tasks = tasks.filter((tasks) => tasks.name !== name);
-    alterTask.status = status;
-    tasks.push(alterTask);
+    const tasks = loadAllTasks();
+    tasks.find((task) => task.name === name ? task.status = status : null);
     
     saveTasks(tasks);
     console.log(chalk.green.bold(`Task with name ['${name}'] has been updated!!`));    
