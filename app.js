@@ -1,7 +1,6 @@
 const yargs = require('yargs');
-const fs    = require('fs');
 const chalk = require('chalk');
-
+const task = require('./task');
 
 yargs.command(
     {
@@ -24,7 +23,8 @@ yargs.command(
                 type         : 'string'
             }
         },
-        handler  : ({name,description,status}) => console.log(chalk.green.bold.inverse(`Creating a new task -> title ${name}, description ${description}, status ${status} `)) 
+       // handler  : ({name,description,status}) => console.log(chalk.green.bold.inverse(`Creating a new task -> title ${name}, description ${description}, status ${status} `)) 
+        handler  : ({name,description,status}) => task.addTask(name,description)
     },
 );
 
@@ -32,7 +32,14 @@ yargs.command(
     {
         command  : 'remove',
         describe : 'Remove a task of the ToDo list',
-        handler  : () => console.log(chalk.red.inverse('Removing a task'))
+        builder:{
+            name:{
+                describe: 'Task name',
+                demandOption: true,
+                type: 'string'
+            }
+        },
+        handler  : ({name}) => task.removeTask(name)
     }
 );
 
@@ -40,7 +47,7 @@ yargs.command(
     {
         command  : 'list',
         describe : 'Show all tasks of th ToDo lists',
-        handler  : () => console.log(chalk.yellow.inverse('showing all tasks')),
+        handler  : () => console.log(JSON.stringify(task.loadAllTasks(),null,2)),
     }
 );
 
@@ -48,7 +55,34 @@ yargs.command(
     {
         command  : 'read',
         describe : 'Read a task of the ToDo list',
-        handler  : () => console.log(chalk.blue.inverse('Reading a task'))
+        builder :{
+            name:{
+                describe: 'listing a specific task!',
+                demandOption: true,
+                type: 'string'
+            }
+        },        
+        handler  : ({name}) => console.log(JSON.stringify(task.loadTask(name),null,2))
+    }
+)
+
+yargs.command(
+    {
+        command  : 'update',
+        describe :  'Update a task in the ToDo list',
+        builder  : {
+            name :{
+                describe: 'Updated a task name!',
+                demandOption: true,
+                type: 'string'
+            },
+            status:{
+                describe : 'Updated an option task!',
+                demandOption : true,
+                type : 'string'
+            }            
+        },
+        handler: ({name,status}) => console.log(JSON.stringify(task.updateTask(name,status),null,2))
     }
 )
 
